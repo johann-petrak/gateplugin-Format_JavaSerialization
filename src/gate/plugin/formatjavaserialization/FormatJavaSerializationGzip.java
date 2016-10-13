@@ -59,7 +59,6 @@ public class FormatJavaSerializationGzip extends DocumentFormat  {
   /** Initialise this resource, and return it. */
   @Override
   public Resource init() throws ResourceInstantiationException {
-    System.err.println("Running init of FormatJavaSerializationGzip");
     MimeType mime = new MimeType("application", "javaserializationgzip");
     mimeString2ClassHandlerMap.put(mime.getType() + "/" + mime.getSubtype(),this);
     mimeString2mimeTypeMap.put(mime.getType() + "/" + mime.getSubtype(), mime);
