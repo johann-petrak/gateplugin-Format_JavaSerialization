@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
 <CREOLE-DIRECTORY>
   <JAR SCAN="true">gateplugin-Format_JavaSerialization.jar</JAR>
+  <JAR>lib/snappy-java-1.1.2.6.jar</JAR>
 </CREOLE-DIRECTORY>
