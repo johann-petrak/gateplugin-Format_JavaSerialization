@@ -2,7 +2,6 @@
 /gateplugin-Format_JavaSerialization-*.zip
 /gateplugin-Format_JavaSerialization.jar
 /classes
-/lib
 /build.properties
 *~
 #*#
