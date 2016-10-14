@@ -27,7 +27,6 @@ import gate.creole.metadata.CreoleResource;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.util.zip.GZIPOutputStream;
 import org.xerial.snappy.SnappyOutputStream;
 
 @SuppressWarnings("serial")
@@ -41,7 +40,7 @@ import org.xerial.snappy.SnappyOutputStream;
 public class ExporterJavaSerializationSnappy extends DocumentExporter {
 
   public ExporterJavaSerializationSnappy() {
-    super("Snappy Java Object Serialization","ser.snappy","application/javaserializationsnappy");
+    super("Snappy Java Object Serialization","ser.snappy","application/javaserialization+snappy");
   }
   
   public void export(Document doc, OutputStream out, FeatureMap options)

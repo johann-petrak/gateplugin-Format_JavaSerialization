@@ -40,7 +40,7 @@ import java.util.zip.GZIPOutputStream;
 public class ExporterJavaSerializationGzip extends DocumentExporter {
 
   public ExporterJavaSerializationGzip() {
-    super("Gzipped Java Object Serialization","ser.gz","application/javaserializationgzip");
+    super("Gzipped Java Object Serialization","ser.gz","application/javaserialization+gzip");
   }
   
   public void export(Document doc, OutputStream out, FeatureMap options)

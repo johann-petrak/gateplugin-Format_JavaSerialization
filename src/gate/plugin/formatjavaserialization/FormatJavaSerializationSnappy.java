@@ -60,7 +60,7 @@ public class FormatJavaSerializationSnappy extends DocumentFormat  {
   /** Initialise this resource, and return it. */
   @Override
   public Resource init() throws ResourceInstantiationException {
-    MimeType mime = new MimeType("application", "javaserializationsnappy");
+    MimeType mime = new MimeType("application", "javaserialization+snappy");
     mimeString2ClassHandlerMap.put(mime.getType() + "/" + mime.getSubtype(),this);
     mimeString2mimeTypeMap.put(mime.getType() + "/" + mime.getSubtype(), mime);
     suffixes2mimeTypeMap.put("ser.snappy", mime);
