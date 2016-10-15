@@ -50,7 +50,7 @@ public class ExporterGateXMLSnappy extends DocumentExporter {
     try (
           SnappyOutputStream sos = new SnappyOutputStream(out);
         ) {
-      DocumentStaxUtils.writeDocument(doc, out, "");
+      DocumentStaxUtils.writeDocument(doc, sos, "");
     } catch(Exception e) {
       throw new IOException(e);
     }
