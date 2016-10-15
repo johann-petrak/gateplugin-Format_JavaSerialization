@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this software. If not, see <http://www.gnu.org/licenses/>.
  */
-package gate.plugin.formatjavaserialization;
+package gate.plugin.formatmisc;
 
 import gate.Document;
 import gate.DocumentExporter;
@@ -27,26 +27,28 @@ import gate.creole.metadata.CreoleResource;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.util.zip.GZIPOutputStream;
 
 @SuppressWarnings("serial")
 @CreoleResource(
-        name = "Java Serialization Exporter", 
+        name = "Gzipped Java Serialization Exporter", 
         tool = true, 
         autoinstances = @AutoInstance, 
-        comment = "Export GATE documents as Java serialized objects", 
+        comment = "Export GATE documents as Gzipped Java serialized objects", 
         helpURL = ""
 )
-public class ExporterJavaSerialization extends DocumentExporter {
+public class ExporterJavaSerializationGzip extends DocumentExporter {
 
-  public ExporterJavaSerialization() {
-    super("Java Object Serialization","ser","application/javaserialization");
+  public ExporterJavaSerializationGzip() {
+    super("Gzipped Java Object Serialization","ser.gz","application/javaserialization+gzip");
   }
   
+  @Override
   public void export(Document doc, OutputStream out, FeatureMap options)
     throws IOException {
     try (
           ObjectOutputStream oos = 
-                  new ObjectOutputStream(out);
+                  new ObjectOutputStream(new GZIPOutputStream(out));
         ) {
       oos.writeObject(doc);
     } catch(Exception e) {

@@ -1,9 +1,9 @@
-<project name="gateplugin-Format_JavaSerialization" basedir="." default="jar">
+<project name="gateplugin-Format_Misc" basedir="." default="jar">
 
   <property file="build.properties" />
 
   <!-- Name of the plugin -->
-  <property name="plugin.name" value="gateplugin-Format_JavaSerialization"/>
+  <property name="plugin.name" value="gateplugin-Format_Misc"/>
 
   <!-- Make environment variables available -->
   <property environment="env" />

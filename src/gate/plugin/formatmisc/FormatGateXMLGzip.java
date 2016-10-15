@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this software. If not, see <http://www.gnu.org/licenses/>.
  */
-package gate.plugin.formatjavaserialization;
+package gate.plugin.formatmisc;
 
 import gate.Document;
 import gate.Resource;
@@ -57,6 +57,8 @@ public class FormatGateXMLGzip extends XmlDocumentFormat {
 
   /**
    * Initialise this resource, and return it.
+   * @return 
+   * @throws gate.creole.ResourceInstantiationException
    */
   @Override
   public Resource init() throws ResourceInstantiationException {
@@ -76,12 +78,8 @@ public class FormatGateXMLGzip extends XmlDocumentFormat {
       throw new DocumentFormatException("Cannot create document, no sourceURL");
     }
     String encoding = ((TextualDocument) dcmnt).getEncoding();
-    StatusListener statusListener = new StatusListener() {
-      @Override
-      public void statusChanged(String text) {
-        // This is implemented in DocumentFormat.java and inherited here
-        fireStatusChanged(text);
-      }
+    StatusListener statusListener = (String text) -> {
+      fireStatusChanged(text);
     };
     try (
             InputStream urlStream = sourceURL.openStream();

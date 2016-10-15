@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this software. If not, see <http://www.gnu.org/licenses/>.
  */
-package gate.plugin.formatjavaserialization;
+package gate.plugin.formatmisc;
 
 import gate.Document;
 import gate.DocumentFormat;
@@ -50,13 +50,16 @@ public class FormatJavaSerializationGzip extends DocumentFormat  {
     super();
   }
 
-  /** We could collect repositioning information during XML parsing */
+  /** We could collect repositioning information during XML parsing
+   * @return  */
   @Override
   public Boolean supportsRepositioning() {
-    return new Boolean(false);
+    return false;
   }
 
-  /** Initialise this resource, and return it. */
+  /** Initialise this resource, and return it.
+   * @return 
+   * @throws gate.creole.ResourceInstantiationException */
   @Override
   public Resource init() throws ResourceInstantiationException {
     MimeType mime = new MimeType("application", "javaserialization+gzip");

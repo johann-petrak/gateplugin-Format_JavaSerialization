@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this software. If not, see <http://www.gnu.org/licenses/>.
  */
-package gate.plugin.formatjavaserialization;
+package gate.plugin.formatmisc;
 
 import gate.Document;
 import gate.DocumentExporter;
@@ -26,31 +26,30 @@ import gate.creole.metadata.AutoInstance;
 import gate.creole.metadata.CreoleResource;
 
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import javax.xml.stream.XMLStreamException;
-import org.xerial.snappy.SnappyOutputStream;
+import java.util.zip.GZIPOutputStream;
 
 @SuppressWarnings("serial")
 @CreoleResource(
-        name = "Snappy compressed Gate XML Exporter", 
+        name = "Gzip compressed Gate XML Exporter", 
         tool = true, 
         autoinstances = @AutoInstance, 
-        comment = "Export GATE documents as Snappy compressed GATE XML", 
+        comment = "Export GATE documents as Gzip compressed GATE XML", 
         helpURL = ""
 )
-public class ExporterGateXMLSnappy extends DocumentExporter {
+public class ExporterGateXMLGzip extends DocumentExporter {
 
-  public ExporterGateXMLSnappy() {
-    super("Snappy GATE XML","gatexml.snappy","application/xml+gate+snappy");
+  public ExporterGateXMLGzip() {
+    super("Gzip GATE XML","gatexml.gz","application/xml+gate+gzip");
   }
   
+  @Override
   public void export(Document doc, OutputStream out, FeatureMap options)
     throws IOException {
     try (
-          SnappyOutputStream sos = new SnappyOutputStream(out);
+          GZIPOutputStream sos = new GZIPOutputStream(out);
         ) {
-      DocumentStaxUtils.writeDocument(doc, sos, "");
+      DocumentStaxUtils.writeDocument(doc, out, "");
     } catch(Exception e) {
       throw new IOException(e);
     }
