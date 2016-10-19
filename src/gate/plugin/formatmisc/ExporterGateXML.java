@@ -42,6 +42,7 @@ public class ExporterGateXML extends DocumentExporter {
     super("GATE XML","gatexml","application/xml+gate");
   }
   
+  @Override
   public void export(Document doc, OutputStream out, FeatureMap options)
     throws IOException {
     try  {
